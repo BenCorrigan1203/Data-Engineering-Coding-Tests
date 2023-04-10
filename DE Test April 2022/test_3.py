@@ -6,5 +6,9 @@
 # [TODO]: fix the function
 def sum_current_time(time_str: str) -> int:
     """Expects data in the format HH:MM:SS"""
-    list_of_nums = time_str.split(":")
+    list_of_nums = list(map(int, time_str.split(":")))
     return sum(list_of_nums)
+
+
+def test_function():
+    assert sum_current_time("01:02:03") == 6

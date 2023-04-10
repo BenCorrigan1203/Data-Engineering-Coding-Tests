@@ -1,3 +1,4 @@
+from datetime import datetime
 # [TODO]: step 1
 # Update the is_log_line function below to skip lines that are not valid log lines.
 # Valid log lines have a timestamp, error type, and message. For example, lines 1, 3,
@@ -9,6 +10,13 @@ def is_log_line(line):
     """Takes a log line and returns True if it is a valid log line and returns nothing
     if it is not.
     """
+    try:
+        datetime.strptime(line[0:17], "%d/%m/%y %H:%M:%S")
+    except:
+        return False
+    
+    if ":" not in line:
+        return False 
     return True
 
 
@@ -21,7 +29,11 @@ def get_dict(line):
     """Takes a log line and returns a dict with
     `timestamp`, `log_level`, `message` keys
     """
-    pass
+    split_point  = line.index(":.")
+    log_level = line[18:split_point].strip()
+    message = line[split_point:].replace("\n","")
+    return {'timestamp': line[0:17], 'log_level': log_level, 'message': message}
+
 
 
 # YOU DON'T NEED TO CHANGE ANYTHING BELOW THIS LINE
