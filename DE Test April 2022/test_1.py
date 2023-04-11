@@ -15,7 +15,7 @@ def is_log_line(line):
     except:
         return False
     
-    if ":" not in line:
+    if ":" not in line[17:]:
         return False 
     return True
 

@@ -112,6 +112,3 @@ if __name__ == "__main__":
         for person in csv_reader:
             data = get_court_data(person)
             display_court_data(data)
-
-
-            
